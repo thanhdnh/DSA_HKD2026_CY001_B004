@@ -66,6 +66,17 @@ class Program
         }
         return -1;
     }
+    static int BinSearchRecu(int[] sarr, int left, int right, int value)
+    {
+        if(left>right) return -1;
+        int mid = (left+right)/2;
+        if(value==sarr[mid])
+            return mid;
+        else if(value>sarr[mid])
+            return BinSearchRecu(sarr, mid+1, right, value);
+        else
+            return BinSearchRecu(sarr, left, mid-1, value);
+    }
 
     static void Main(string[] args){
         int[] input = {3, 1, 9, 7}; int v = 9;
@@ -92,5 +103,8 @@ class Program
         int index5 = BinSearch(sorted, 0, 
                                 sorted.Length-1, v);
         Console.WriteLine($"BinSearch: {index5}");
+
+        int index6 = BinSearchRecu(sorted, 0, sorted.Length-1, v);
+        Console.Write($"BinSearchRecu: {index6}");
     }
 }
