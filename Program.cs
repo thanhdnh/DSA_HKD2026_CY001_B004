@@ -77,6 +77,10 @@ class Program
         else
             return BinSearchRecu(sarr, left, mid-1, value);
     }
+    /*
+        Bài tập 2. Cài đặt BinSearchRecu2 dùng Array,
+        không dùng left và right
+    */
 
     static void Main(string[] args){
         int[] input = {3, 1, 9, 7}; int v = 9;
