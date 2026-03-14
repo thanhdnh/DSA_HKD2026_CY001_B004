@@ -52,6 +52,21 @@ class Program
     }
     //Bài 1. Xây dựng RecuSearch3(Array, int)
     //Trong đó, mảng được chia thành 2 phần đều nhau
+    
+    static int BinSearch(int[] sarr, int left, int right, int value)
+    {
+        while(left<=right){
+            int mid = (left+right)/2;
+            if(value==sarr[mid])
+                return mid;
+            else if (value > sarr[mid])
+                left = mid + 1; //Tìm bên phải
+            else
+                right = mid - 1; //Tìm bên trái
+        }
+        return -1;
+    }
+
     static void Main(string[] args){
         int[] input = {3, 1, 9, 7}; int v = 9;
         int index1 = SeqSearch(input, v);
@@ -71,5 +86,11 @@ class Program
         int x = 11;
         int index4 = SentSearch(input, x);
         Console.WriteLine($"SentSearch: {index4}");
+
+        int[] sorted = {2, 3, 6, 9, 11};
+        v = 9;
+        int index5 = BinSearch(sorted, 0, 
+                                sorted.Length-1, v);
+        Console.WriteLine($"BinSearch: {index5}");
     }
 }
