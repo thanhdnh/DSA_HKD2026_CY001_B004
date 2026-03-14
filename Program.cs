@@ -1,10 +1,25 @@
-﻿class Program
+﻿//https://github.com/thanhdnh/DSA_HKD2026_CY001_B004
+class Program
 {
     static int SeqSearch(int[] arr, int value){
         int i = 0;
         while(arr[i]!=value)
             i++;
         return i;
+    }
+    static int SentSearch(int[] arr, int value){
+        int temp = arr[arr.Length-1];
+        arr[arr.Length-1] = value;
+        int ind = SeqSearch(arr, value);
+        arr[arr.Length-1] = temp;
+        if(ind<arr.Length-1)
+            return ind;
+        else{
+            if(arr[arr.Length-1]==value)
+                return arr.Length-1;
+            else
+                return -1;
+        }
     }
     static int RecuSearch(int[] arr, int from, int value)
     {
@@ -23,8 +38,7 @@
         int first = arr.GetLowerBound(0);
         if((int)arr.GetValue(first)==value)
             return first;
-        else
-        {
+        else{
             Array newarr = Array.CreateInstance(
                                 typeof(int),
                                 new int[]{arr.Length-1},
@@ -36,6 +50,8 @@
             return RecuSearch2(newarr, value);
         }
     }
+    //Bài 1. Xây dựng RecuSearch3(Array, int)
+    //Trong đó, mảng được chia thành 2 phần đều nhau
     static void Main(string[] args){
         int[] input = {3, 1, 9, 7}; int v = 9;
         int index1 = SeqSearch(input, v);
@@ -51,5 +67,9 @@
         input2.SetValue(9, 2); input2.SetValue(7, 3);
         int index3 = RecuSearch2(input2, v);
         Console.WriteLine($"RecuSearch2: {index3}");
+
+        int x = 11;
+        int index4 = SentSearch(input, x);
+        Console.WriteLine($"SentSearch: {index4}");
     }
 }
