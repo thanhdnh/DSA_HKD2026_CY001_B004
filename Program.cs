@@ -82,6 +82,12 @@ class Program
         không dùng left và right
     */
 
+    //Bài tập 3: cài đặt TriSearch với 2 mốc (chia 3 mảng)
+    static int TriSearch(int[] sarr, int left, int mid, int right, int value)
+    {
+        return -1;
+    }
+
     static void Main(string[] args){
         int[] input = {3, 1, 9, 7}; int v = 9;
         int index1 = SeqSearch(input, v);
